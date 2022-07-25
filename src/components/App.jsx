@@ -48,9 +48,13 @@ const App = () => {
     fetchData();
   }, [search, page]);
 
-  const handleSubmit = search => {
+  const handleSubmit = newSearch => {
+    if (search === newSearch && page === 1) {
+      Notify.failure('You allready use this request');
+      return;
+    }
     setData([]);
-    setSearch(search);
+    setSearch(newSearch);
     setPage(1);
   };
 
